@@ -29,11 +29,15 @@ Il vous est demandé de mettre en place la solution sur la base du Framework Sym
   - Nom
   - Email
   - Question
+  - Date de création
+  - Status (bool)
 
 # Pages
 
-- Page formulaire de contact `/contact` ContactController.php -> Création du JSON via un Service
-- Page BO `/admin` AdminController.php
-  - Listing des demandes
-  - Grouper les demandes par mail
-- Service de création de JSON qui reprends les infos du client
+[x] Page formulaire de contact `/contact` ContactController.php -> Création du JSON via un Service
+[ ] Créer une page login pour le BO
+[x] Page BO `/admin` AdminController.php
+  [x] Listing des demandes
+  [x] Grouper les demandes par mail
+[ ] Pouvoir archiver les messages
+[x] Service de création de JSON qui reprends les infos du client

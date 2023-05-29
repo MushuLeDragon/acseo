@@ -33,6 +33,7 @@ class ContactController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $datas = $form->getData();
             $datas['createdAt'] = date('Y-m-d');
+            $datas['status'] = true;
 
             $filesystem = new Filesystem();
             $directory = $this->getParameter('kernel.project_dir') . '/public/json/';
