@@ -35,10 +35,22 @@ Il vous est demandé de mettre en place la solution sur la base du Framework Sym
 # Pages
 
 [x] Page formulaire de contact `/contact` ContactController.php -> Création du JSON via un Service
-[ ] Créer une page login pour le BO
+[x] Service de création de JSON qui reprends les infos du client
+[x] Créer une page login pour le BO
 [x] Page BO `/admin` AdminController.php
   [x] Listing des demandes
   [x] Grouper les demandes par mail
-  [ ] Archiver un message
-[ ] Pouvoir archiver les messages
-[x] Service de création de JSON qui reprends les infos du client
+  [x] Archiver un message + update json
+[x] Rendre inacessible le dossier json
+[x] Bloquer l'acces à la page /admin aux users n'ayant pas le role Admin
+[x] Ajouter le role admin a la creation du user
+
+Bonus :
+
+[ ] Créer Homepage
+[ ] Ajouter Tailwind
+[ ] Dockerizer l'app
+[ ] Héberger sur Dockerhub
+[ ]
+
+

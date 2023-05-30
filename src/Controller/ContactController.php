@@ -15,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ContactController extends AbstractController
 {
-    #[Route('/contact', name: 'contact')]
+    #[Route('/contact', name: 'app_contact')]
     public function contact(Request $request, EntityManagerInterface $em): Response
     {
         $form = $this->createForm(ContactType::class, new Contact);
