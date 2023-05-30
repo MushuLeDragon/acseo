@@ -22,6 +22,7 @@
         <th>Lastname</th>
         <th>Message</th>
         <th>Status</th>
+        <th>JSON</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -38,6 +39,7 @@
               <td>{{ contact.lastname }}</td>
               <td>{{ contact.content }}</td>
               <td>{{ contact.status ? 'Processing' : 'Archived' }}</td>
+              <td>{{ contact.json }}.json</td>
               <td>
                 <a href="{{ path('contact_toggle_status', { 'id': contact.id }) }}">
                   {{ contact.status ? 'Archive' : 'Restore' }}

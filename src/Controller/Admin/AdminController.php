@@ -35,6 +35,15 @@ class AdminController extends AbstractController
         $contact->setStatus(!$contact->isStatus());
         $em->flush();
 
+        $jsonFileName = $contact->getJson() . '.json';
+        $filePath = $this->getParameter('kernel.project_dir') . '/public/json/' . $jsonFileName;
+        
+        $content = file_get_contents($filePath);
+        $data = json_decode($content, true);
+        $data['status'] = $contact->isStatus();
+        $updatedJsonData = json_encode($data, JSON_PRETTY_PRINT);
+        file_put_contents($filePath, $updatedJsonData);
+
         return $this->redirectToRoute('admin');
     }
 }
