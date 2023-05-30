@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AdminController extends AbstractController
 {
-    #[Route('/admin', name: 'admin')]
+    #[Route('/admin', name: 'app_admin')]
     public function admin(ContactRepository $contactRepository): Response
     {
         $contactList = $contactRepository->findAll();
@@ -37,13 +37,13 @@ class AdminController extends AbstractController
 
         $jsonFileName = $contact->getJson() . '.json';
         $filePath = $this->getParameter('kernel.project_dir') . '/public/json/' . $jsonFileName;
-        
+
         $content = file_get_contents($filePath);
         $data = json_decode($content, true);
         $data['status'] = $contact->isStatus();
         $updatedJsonData = json_encode($data, JSON_PRETTY_PRINT);
         file_put_contents($filePath, $updatedJsonData);
 
-        return $this->redirectToRoute('admin');
+        return $this->redirectToRoute('app_admin');
     }
 }

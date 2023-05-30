@@ -4,6 +4,7 @@
 {% endblock %}
 
 {% block body %}
+  <div class="flex items-center justify-center min-h-screen">
   <form method="post">
     {% if error %}
       <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -47,4 +48,5 @@
       Register
     </button>
   </a>
+  </div>
 {% endblock %}

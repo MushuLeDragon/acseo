@@ -2,6 +2,15 @@
 
 Exercice technique / fonctionnel utilisé par ACSEO pour ses recrutements.
 
+## Installation
+
+```shell
+git clone https://github.com/MushuLeDragon/acseo.git
+cd acseo
+composer install
+npm install
+npm run build
+```
 
 ## Contexte
 

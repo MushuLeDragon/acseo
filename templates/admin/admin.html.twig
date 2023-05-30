@@ -3,59 +3,54 @@
 {% block title 'Admin' %}
 
 {% block body %}
-  <h1>Admin</h1>
+  <h1 class="text-3xl font-bold mb-4">Admin</h1>
 
-  <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
+  <div class="flex flex-col">
+    <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+        <div class="overflow-hidden">
+          <table class="min-w-full text-left text-sm font-light">
+            <thead class="border-b font-medium dark:border-neutral-500">
+              <tr>
+                <th scope="col" class="px-6 py-4">Email</th>
+                <th scope="col" class="px-6 py-4">Fistname</th>
+                <th scope="col" class="px-6 py-4">Lastname</th>
+                <th scope="col" class="px-6 py-4">Message</th>
+                <th scope="col" class="px-6 py-4">Status</th>
+                <th scope="col" class="px-6 py-4">JSON</th>
+                <th scope="col" class="px-6 py-4">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for email, contactJsons in datas %}
+                {% set count = contactJsons|length %}
+                {% if count > 0 %}
+                  {% for contact in contactJsons %}
+                    <tr class="border-b dark:border-neutral-500">
+                      {% if loop.first %}
+                        <td rowspan="{{ count }}" class="whitespace-nowrap px-6 py-4 font-medium">{{ email }}</td>
+                      {% endif %}
+                      <td class="whitespace-nowrap px-6 py-4">{{ contact.firstname }}</td>
+                      <td class="whitespace-nowrap px-6 py-4">{{ contact.lastname }}</td>
+                      <td class="whitespace-nowrap px-6 py-4">{{ contact.content }}</td>
+                      <td class="whitespace-nowrap px-6 py-4">{{ contact.status ? 'Processing' : 'Archived' }}</td>
+                      <td class="whitespace-nowrap px-6 py-4">{{ contact.json }}.json</td>
+                      <td class="whitespace-nowrap px-6 py-4">
+                        <a href="{{ path("contact_toggle_status", { 'id': contact.id }) }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                          {{ contact.status ? 'Archive' : 'Restore' }}
+                        </a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                {% endif %}
+              {% endfor %}
+            </tbody>
+          </table>
 
-  <style>
-    table,
-    tr,
-    th,
-    td {
-      border: 1px solid black;
-    }
-  </style>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Email</th>
-        <th>Fistname</th>
-        <th>Lastname</th>
-        <th>Message</th>
-        <th>Status</th>
-        <th>JSON</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for email, contactJsons in datas %}
-        {% set count = contactJsons|length %}
-        {% if count > 0 %}
-          {% for contact in contactJsons %}
-            <tr>
-              {% if loop.first %}
-                <td rowspan="{{ count }}">{{ email }}</td>
-              {% endif %}
-              <td>{{ contact.firstname }}</td>
-              <td>{{ contact.lastname }}</td>
-              <td>{{ contact.content }}</td>
-              <td>{{ contact.status ? 'Processing' : 'Archived' }}</td>
-              <td>{{ contact.json }}.json</td>
-              <td>
-                <a href="{{ path('contact_toggle_status', { 'id': contact.id }) }}">
-                  {{ contact.status ? 'Archive' : 'Restore' }}
-                </a>
-                {# <button>
-                  {{ contact.status ? 'Archive' : 'Restore' }}
-                </button> #}
-              </td>
-            </tr>
-          {% endfor %}
-        {% endif %}
-      {% endfor %}
-    </tbody>
-  </table>
+
 {% endblock %}
