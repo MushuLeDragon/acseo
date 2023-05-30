@@ -39,5 +39,6 @@ Il vous est demandé de mettre en place la solution sur la base du Framework Sym
 [x] Page BO `/admin` AdminController.php
   [x] Listing des demandes
   [x] Grouper les demandes par mail
+  [ ] Archiver un message
 [ ] Pouvoir archiver les messages
 [x] Service de création de JSON qui reprends les infos du client

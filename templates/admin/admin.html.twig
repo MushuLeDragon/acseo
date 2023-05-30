@@ -21,6 +21,7 @@
         <th>Fistname</th>
         <th>Lastname</th>
         <th>Message</th>
+        <th>Status</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -28,20 +29,27 @@
       {% for email, contactJsons in datas %}
         {% set count = contactJsons|length %}
         {% if count > 0 %}
-          {% for json in contactJsons %}
+          {% for contact in contactJsons %}
             <tr>
               {% if loop.first %}
                 <td rowspan="{{ count }}">{{ email }}</td>
               {% endif %}
-              <td>{{ json.firstname }}</td>
-              <td>{{ json.lastname }}</td>
-              <td>{{ json.content }}</td>
-              <td>Archiver</td>
+              <td>{{ contact.firstname }}</td>
+              <td>{{ contact.lastname }}</td>
+              <td>{{ contact.content }}</td>
+              <td>{{ contact.status ? 'Processing' : 'Archived' }}</td>
+              <td>
+                <a href="{{ path('contact_toggle_status', { 'id': contact.id }) }}">
+                  {{ contact.status ? 'Archive' : 'Restore' }}
+                </a>
+                {# <button>
+                  {{ contact.status ? 'Archive' : 'Restore' }}
+                </button> #}
+              </td>
             </tr>
           {% endfor %}
         {% endif %}
       {% endfor %}
     </tbody>
   </table>
-
 {% endblock %}
