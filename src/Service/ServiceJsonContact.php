@@ -11,6 +11,7 @@ class ServiceJsonContact
 {
   /**
    * CRUD JSON
+   * source: https://stackoverflow.com/a/24324186/7998119
    *
    * @param Contact $contact
    * @param JsonResponse $json

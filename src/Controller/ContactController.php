@@ -34,6 +34,7 @@ class ContactController extends AbstractController
                 $filesystem->mkdir($directory);
             }
 
+            // source: https://lindevs.com/methods-to-return-object-as-json-response-in-symfony
             $json = $this->json(
                 $datas,
                 headers: ['Content-Type' => 'application/json;charset=UTF-8']
