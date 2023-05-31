@@ -12,6 +12,7 @@ npm install
 npm run build
 cp .env.local.example .env.local
 nano .env.local
+mysql -uroot -p < dump.sql
 ```
 
 ## Contexte
