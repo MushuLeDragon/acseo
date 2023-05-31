@@ -27,6 +27,36 @@ docker run --detach --name=acseo_database --publish 6603:3306 mushuledragon/acse
 docker exec -it acseo_database mysql -uroot -ptoor
 ```
 
+# Entities
+
+- Contact
+  - Prénom
+  - Nom
+  - Email
+  - Question
+  - Date de création
+  - Status (bool)
+
+# Pages
+
+- [x] Page formulaire de contact `/contact` ContactController.php -> Création du JSON via un Service
+- [x] Service de création de JSON qui reprends les infos du client
+- [x] Créer une page login pour le BO
+- [x] Page BO `/admin` AdminController.php
+  - [x] Listing des demandes
+  - [x] Grouper les demandes par mail
+  - [x] Archiver un message + update json
+- [x] Rendre inacessible le dossier json
+- [x] Bloquer l'acces à la page /admin aux users n'ayant pas le role Admin
+- [x] Ajouter le role admin a la creation du user
+
+Bonus :
+
+- [x] Créer Homepage
+- [x] Ajouter Tailwind
+- [ ] Dockerizer l'app
+- [ ] Héberger sur Dockerhub
+
 ## Contexte
 
 Vous êtes développeur chez ACSEO. Vous recevez une demande de la part d'un client pour la mise en place d'une nouvelle fonctionnalité sur son site Internet.
@@ -45,35 +75,3 @@ Les règles de gestion suivantes sont à mettre en place :
 > Toute demande de contact doit déclencher la création d'un fichier JSON unique dans un répertoire spécifique non exposé par le serveur web, qui contient l'ensemble du contenu de la demande : informations du contact et contenu de la demande. A terme d'autres notifications seront déclenchées.
 
 Il vous est demandé de mettre en place la solution sur la base du Framework Symfony.
-
-# Entities
-
-- Contact
-  - Prénom
-  - Nom
-  - Email
-  - Question
-  - Date de création
-  - Status (bool)
-
-# Pages
-
-[x] Page formulaire de contact `/contact` ContactController.php -> Création du JSON via un Service
-[x] Service de création de JSON qui reprends les infos du client
-[x] Créer une page login pour le BO
-[x] Page BO `/admin` AdminController.php
-  [x] Listing des demandes
-  [x] Grouper les demandes par mail
-  [x] Archiver un message + update json
-[x] Rendre inacessible le dossier json
-[x] Bloquer l'acces à la page /admin aux users n'ayant pas le role Admin
-[x] Ajouter le role admin a la creation du user
-
-Bonus :
-
-[x] Créer Homepage
-[x] Ajouter Tailwind
-[ ] Dockerizer l'app
-[ ] Héberger sur Dockerhub
-
-
