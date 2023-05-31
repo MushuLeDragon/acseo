@@ -3,6 +3,11 @@
 {% block title 'Admin' %}
 
 {% block body %}
+  <style>
+    .disabled {
+      opacity: 0.3;
+    }
+  </style>
   <h1 class="text-3xl font-bold mb-4">Admin</h1>
 
   <div class="flex flex-col">
@@ -30,11 +35,11 @@
                       {% if loop.first %}
                         <td rowspan="{{ count }}" class="whitespace-nowrap px-6 py-4 font-medium">{{ email }}</td>
                       {% endif %}
-                      <td class="whitespace-nowrap px-6 py-4">{{ contact.firstname }}</td>
-                      <td class="whitespace-nowrap px-6 py-4">{{ contact.lastname }}</td>
-                      <td class="whitespace-nowrap px-6 py-4">{{ contact.content }}</td>
-                      <td class="whitespace-nowrap px-6 py-4">{{ contact.status ? 'Processing' : 'Archived' }}</td>
-                      <td class="whitespace-nowrap px-6 py-4">{{ contact.json }}.json</td>
+                      <td class="whitespace-nowrap px-6 py-4 {{ contact.status ? '' : 'disabled' }}">{{ contact.firstname }}</td>
+                      <td class="whitespace-nowrap px-6 py-4 {{ contact.status ? '' : 'disabled' }}">{{ contact.lastname }}</td>
+                      <td class="whitespace-nowrap px-6 py-4 {{ contact.status ? '' : 'disabled' }}">{{ contact.content }}</td>
+                      <td class="whitespace-nowrap px-6 py-4 {{ contact.status ? '' : 'disabled' }}">{{ contact.status ? 'Processing' : 'Archived' }}</td>
+                      <td class="whitespace-nowrap px-6 py-4 {{ contact.status ? '' : 'disabled' }}">{{ contact.json }}.json</td>
                       <td class="whitespace-nowrap px-6 py-4">
                         <a href="{{ path("contact_toggle_status", { 'id': contact.id }) }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                           {{ contact.status ? 'Archive' : 'Restore' }}
