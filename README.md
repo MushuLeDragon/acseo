@@ -15,6 +15,18 @@ nano .env.local
 mysql -uroot -p < dump.sql
 ```
 
+## Docker
+
+```shell
+docker-compose up -d
+
+docker run -d --name=acseo -p 80:80 mushuledragon/acseo
+docker exec -it acseo bash
+
+docker run --detach --name=acseo_database --publish 6603:3306 mushuledragon/acseo_db
+docker exec -it acseo_database mysql -uroot -ptoor
+```
+
 ## Contexte
 
 Vous êtes développeur chez ACSEO. Vous recevez une demande de la part d'un client pour la mise en place d'une nouvelle fonctionnalité sur son site Internet.
